@@ -3,17 +3,17 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+ 
 body{
     font-family: 'Open Sans', sans-serif;
     background-color: rgb(69, 164, 140);
 }
-
+ 
 input, button {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
 }
-
+ 
 .head_bar {
     padding: 12px;
     display: flex;
@@ -25,15 +25,15 @@ input, button {
 sub{
     font-size: 14px;
 }
-
+ 
 main {
     max-width: 800px;
     width: 80%;
     margin: 0 auto;
     padding: 16px;
-
+ 
 }
-
+ 
 .input_section {
     background-color: white;
     display: flex;
@@ -42,16 +42,16 @@ main {
     border: 1px solid black;
     border-radius: 10px;
 }
-
+ 
 .input_section > h2 {
     text-align: center;
     color: rgb(237, 100, 123);
 }
-
+ 
 .input_section > form > .input {
     margin: 8px 0;
 }
-
+ 
 .input_section > form > button {
     background-color: rgb(237, 100, 123);
     color: white;
@@ -62,36 +62,36 @@ main {
     padding: 8px;
     cursor: pointer;
 }
-
+ 
 .input_section > form > button > span {
     font-weight: bold;
 }
-
+ 
 .input_section > form > .input > input {
     display: block;
     width: 100%;
     padding: 8px;
     border-radius: 5px;
 }
-
-
+ 
+ 
 .input_section > form > .input > label {
     color: rgb(237, 100, 123);
     font-weight: bold;
 }
-
+ 
 .input_section > form > .input_inline {
     margin: 12px 0;
     display: flex;
     align-items: center;
 }
-
+ 
 .input_section > form > .input_inline > label {
     color: rgb(237, 100, 123);
     font-weight: bold;
     margin-right: 10px;
 }
-
+ 
 .search_section {
     background-color: white;
     margin: 16px 0;
@@ -102,11 +102,11 @@ main {
     border: 1px solid black;
     border-radius: 10px;
 }
-
+ 
 .search_section > h2 {
     color: rgb(237, 100, 123);
 }
-
+ 
 .search_section > form {
     padding: 16px;
     width: 100%;
@@ -114,17 +114,17 @@ main {
     grid-template-columns: auto 1fr 0.5fr;
     grid-gap: 10px;
 }
-
+ 
 .search_section > form > label {
     display: flex;
     align-items: center;
 }
-
+ 
 .search_section > form > input {
     padding: 5px;
     border-radius: 5px;
 }
-
+ 
 .search_section > form > button {
     background-color: rgb(237, 100, 123);
     color: white;
@@ -132,7 +132,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
+ 
 .book_shelf {
     background-color: white;
     margin: 16px 0 0 0;
@@ -140,26 +140,26 @@ main {
     padding: 16px;
     border-radius: 10px;
 }
-
+ 
 .book_shelf > h2 {
     color: rgb(237, 100, 123);
 }
-
+ 
 .book_shelf > .book_list {
     padding: 16px;
 }
-
+ 
 .book_shelf > .book_list > .book_item {
     padding: 8px 16px 16px 16px;
     border: 1px solid black;
     border-radius: 5px;
     margin: 10px 0;
 }
-
+ 
 .book_shelf > .book_list > .book_item > h3, p {
     margin: 8px 0;
 }
-
+ 
 .book_shelf > .book_list > .book_item > .action > button {
     border: 0;
     padding: 5px;
@@ -167,12 +167,12 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
+ 
 .book_shelf > .book_list > .book_item > .action > .green {
     background-color: rgb(53, 176, 61);
     color: white;
 }
-
+ 
 .book_shelf > .book_list > .book_item > .action > .red {
     background-color: rgb(190, 48, 62);
     color: white;

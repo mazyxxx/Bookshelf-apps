@@ -8,31 +8,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const findSubmit = document.querySelector('#findSubmit');
   const incompleteBookshelfList = document.querySelector('#incompleteBookshelfList');
   const completeBookshelfList = document.querySelector('#completeBookshelfList');
-
+ 
   const mybookshelf = JSON.parse(localStorage.getItem('mybookshelf')) || {
     incomplete: [],
     complete: []
   };
-
+ 
   function refreshBookshelf() {
     incompleteBookshelfList.innerHTML = '';
     completeBookshelfList.innerHTML = '';
-
+ 
     mybookshelf.incomplete.forEach((book, index) => {
       createBookCard(book, index, false);
     });
-
+ 
     mybookshelf.complete.forEach((book, index) => {
       createBookCard(book, index, true);
     });
   }
-
+ 
   function addBook() {
     const title = Title.value;
     const author = Author.value;
     const year = parseInt(yearBook.value); // Konversi tahun ke tipe number
     const isComplete = inputBookIsComplete.checked;
-
+ 
     if (title && author && !isNaN(year)) {
         const book = {
             id: Date.now(),
@@ -40,27 +40,27 @@ document.addEventListener('DOMContentLoaded', function () {
             author,
             year,
         };
-
+ 
         if (isComplete) {
             mybookshelf.complete.push(book);
         } else {
             mybookshelf.incomplete.push(book);
         }
-
+ 
         localStorage.setItem('mybookshelf', JSON.stringify(mybookshelf));
-
+ 
         Title.value = '';
         Author.value = '';
         yearBook.value = '';
         inputBookIsComplete.checked = false;
-
+ 
         refreshBookshelf();
     }
 }
-
+ 
   function moveBook(index, isComplete) {
     const book = isComplete ? mybookshelf.complete[index] : mybookshelf.incomplete[index];
-
+ 
     if (isComplete) {
       mybookshelf.complete.splice(index, 1);
       mybookshelf.incomplete.push(book);
@@ -68,29 +68,29 @@ document.addEventListener('DOMContentLoaded', function () {
       mybookshelf.incomplete.splice(index, 1);
       mybookshelf.complete.push(book);
     }
-
+ 
     localStorage.setItem('mybookshelf', JSON.stringify(mybookshelf));
     refreshBookshelf();
   }
-
+ 
     
   function createBookCard(book, index, isComplete) {
     const bookItem = document.createElement('article');
     bookItem.classList.add('book_item');
     bookItem.dataset.index = index;
-
+ 
     const action = document.createElement('div');
     action.classList.add('action');
-
+ 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'red';
     deleteButton.textContent = 'Hapus buku';
     deleteButton.addEventListener('click', function () {
         deleteBook(index, isComplete);
     });
-
+ 
     action.appendChild(deleteButton);
-
+ 
     if (book) {
         bookItem.innerHTML = `
         <h3>${book.title}</h3>
@@ -103,16 +103,16 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         bookItem.innerHTML = '<p>Error: Data buku tidak ditemukan.</p>';
     }
-
+ 
     bookItem.appendChild(action);
-
+ 
     if (isComplete) {
         completeBookshelfList.appendChild(bookItem);
     } else {
         incompleteBookshelfList.appendChild(bookItem);
     }
 }
-
+ 
 function deleteBook(index, isComplete) {
     if (isComplete) {
         mybookshelf.complete.splice(index, 1);
@@ -122,7 +122,7 @@ function deleteBook(index, isComplete) {
     localStorage.setItem('mybookshelf', JSON.stringify(mybookshelf));
     refreshBookshelf();
 }
-
+ 
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('red')) {
         const index = e.target.parentElement.parentElement.dataset.index;
@@ -131,7 +131,7 @@ document.addEventListener('click', function (e) {
         alert("Buku berhasil dihapus");
     }
   });
-
+ 
   findSubmit.addEventListener('click', function (e) {
       e.preventDefault();
       const searchTerm = findBook.value.toLowerCase();
@@ -142,25 +142,25 @@ document.addEventListener('click', function (e) {
         createBookCard(book, index, mybookshelf.complete.includes(book));
       });
     });
-
+ 
   bookSubmit.addEventListener('click', function (e) {
     e.preventDefault();
     addBook();
   });
-
+ 
   incompleteBookshelfList.addEventListener('click', function (e) {
     if (e.target.classList.contains('green')) {
       const index = e.target.parentElement.parentElement.dataset.index;
       moveBook(index, false);
     }
   });
-
+ 
   completeBookshelfList.addEventListener('click', function (e) {
     if (e.target.classList.contains('green')) {
       const index = e.target.parentElement.parentElement.dataset.index;
       moveBook(index, true);
     }
   });
-
+ 
   refreshBookshelf();
 });
